@@ -1,0 +1,116 @@
+{
+"config" : [
+	{"interlock_unit" :
+		{
+			"fault_number" : 1,
+			"monitor_list" : [
+				{"pv_name" : "pressure:ai:00", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:01", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:02", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:03", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:04", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:05", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:06", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:07", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:08", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:09", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:10", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:11", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:12", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:13", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:14", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:15", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:16", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:17", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:18", "operator" : ">=", "limit" : 1e-6},
+				{"pv_name" : "pressure:ai:19", "operator" : ">=", "limit" : 1e-6}
+			],
+			"action_list" : [
+				{"action" : "put", "pv_name" : "rf:ao", "target": 0.3}
+			]
+		}
+	},
+	{"interlock_unit" :
+		{
+			"fault_number" : 2,
+			"monitor_list" : [
+				{"pv_name" : "pressure:ai:00", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:01", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:02", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:03", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:04", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:05", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:06", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:07", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:08", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:09", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:10", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:11", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:12", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:13", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:14", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:15", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:16", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:17", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:18", "operator" : ">=", "limit" : 1e-5},
+				{"pv_name" : "pressure:ai:19", "operator" : ">=", "limit" : 1e-5}
+			],
+			"action_list" : [
+				{"action" : "put", "pv_name" : "threshold:bo:00", "target" : 0},
+				{"action" : "put", "pv_name" : "threshold:bo:01", "target" : 0},
+				{"action" : "put", "pv_name" : "threshold:bo:02", "target" : 0},
+				{"action" : "put", "pv_name" : "threshold:bo:03", "target" : 0}
+			]
+		}
+	},
+	{"interlock_unit" :
+		{
+			"fault_number" : 1,
+			"monitor_list" : [
+				{"pv_name" : "pressure:ai:00", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:01", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:02", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:03", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:04", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:05", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:06", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:07", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:08", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:09", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:10", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:11", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:12", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:13", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:14", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:15", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:16", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:17", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:18", "operator" : ">=", "limit" : 1e-4},
+				{"pv_name" : "pressure:ai:19", "operator" : ">=", "limit" : 1e-4}
+			],
+			"action_list" : [
+				{"action" : "put", "pv_name" : "filoff:bo:00", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:01", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:02", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:03", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:04", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:05", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:06", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:07", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:08", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:09", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:10", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:11", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:12", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:13", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:14", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:15", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:16", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:17", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:18", "target": 0},
+				{"action" : "put", "pv_name" : "filoff:bo:19", "target": 0}
+			]
+		}
+	}
+]
+}
