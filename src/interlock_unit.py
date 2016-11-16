@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import time
+import datetime
 from epics import PV
 from epics import caget, caput
 
@@ -29,8 +30,11 @@ class Monitor(object):
 class Action(object):
     def __init__(self, action_dict):
         self.action = action_dict['action']
-        self.name = action_dict['pv_name']
-        self.target = action_dict['target']
+        if action_dict['action'] == "put":
+            self.name = action_dict['pv_name']
+            self.target = action_dict['target']
+        if action_dict['action'] == "delay_time":
+            self.delay_time = action_dict['delay_time']
 
     def execute_action(self):
         if self.action == 'put':
@@ -38,6 +42,11 @@ class Action(object):
             if pv_val != self.target:
                 caput(self.name, self.target)
                 print self.name + "'s value is changed to " + str(self.target)
+        if self.action == 'delay_time':
+            print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print "dely %fs"%float(self.delay_time)
+            time.sleep(float(self.delay_time))
+            print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 class InterlockUnit(object):
 

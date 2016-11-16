@@ -1,0 +1,199 @@
+program interlock
+
+double v0,v1,v2,v3,v4,v5,v6,v7,v8;
+short t1,t2,t3,t4,t5,t6,t7,t8,g1;
+short k1,k2,k3,k4,k5,k6,k7,k8;
+short kick1,kick2,kick3,kick4,sept;
+short SRenable,LAenable,Beamstop,Beamstop2;
+
+double Curr, HHCVcav, HHCPosition,SWinterlock;
+short HHCMode, Tuningbypot, Tuningbyvcav;
+
+assign kick1 to "SR_TM_Kick01:enable:bo";
+assign kick2 to "SR_TM_Kick02:enable:bo";
+assign kick3 to "SR_TM_Kick03:enable:bo";
+assign kick4 to "SR_TM_Kick04:enable:bo";
+assign sept to "SR_TM_Septum:enable:bo";
+
+assign v0 to "Reflect.alarm0";
+assign v1 to "Reflect.alarm1";
+assign v2 to "Reflect.alarm2";
+assign v3 to "Reflect.alarm3";
+assign v4 to "Reflect.alarm4";
+assign v5 to "Reflect.alarm5";
+assign v6 to "Reflect.alarm6";
+assign v7 to "Reflect.alarm7";
+assign v8 to "Reflect.alarm8";
+
+assign t1 to "IJ_TM_SSA01:enable:bo";
+assign t2 to "IJ_TM_SSA02:enable:bo";
+assign t3 to "IJ_TM_SSA03:enable:bo";
+assign t4 to "IJ_TM_SSA04:enable:bo";
+assign t5 to "IJ_TM_SSA05:enable:bo";
+assign t6 to "IJ_TM_SSA06:enable:bo";
+assign t7 to "IJ_TM_SSA07:enable:bo";
+assign t8 to "IJ_TM_SSA08:enable:bo";
+assign g1 to "IJ_TM_eGunTrigger:enable:bo";
+
+assign k1 to "kly1:highvoltagesw:bo";
+assign k2 to "kly2:highvoltagesw:bo";
+assign k3 to "kly3:highvoltagesw:bo";
+assign k4 to "kly4:highvoltagesw:bo";
+assign k5 to "kly5:highvoltagesw:bo";
+assign k6 to "kly6:highvoltagesw:bo";
+assign k7 to "kly7:highvoltagesw:bo";
+assign k8 to "kly8:highvoltagesw:bo";
+
+
+assign SRenable to "SR-RP:enable:bi";
+assign LAenable to "LA-RP:enable:bi";
+assign Beamstop to "RNG:Vacuum:Valve1:Set";
+assign Beamstop2 to "RNG:BeamStop:bo";
+
+assign Curr to "RNG:BEAM:CURR";
+assign HHCMode to "RNG:HHC:Mode";
+assign Tuningbypot to "RNG:HHC:Tuningbypot:bo";
+assign Tuningbyvcav to "RNG:HHC:Tuningbyvcav:bo";
+assign HHCVcav to "RNG:HHC:Vcav:ao";
+assign HHCPosition to "RNG:HHC:Position:ao";
+assign SWinterlock to "TL:SW:Interlock:calc";
+
+monitor v0;
+monitor v1;
+monitor v2;
+monitor v3;
+monitor v4;
+monitor v5;
+monitor v6;
+monitor v7;
+monitor v8;
+
+monitor t1;
+monitor t2;
+monitor t3;
+monitor t4;
+monitor t5;
+monitor t6;
+monitor t7;
+monitor t8;
+
+monitor SRenable;
+monitor LAenable;
+monitor Beamstop;
+monitor Beamstop2;
+
+monitor HHCMode;
+monitor Curr;
+monitor Tuningbypot;
+monitor Tuningbyvcav;
+monitor HHCVcav;
+monitor HHCPosition;
+monitor SWinterlock;
+
+ss ss1 {
+    state init {
+	when (delay(10)) {
+	    printf("interlock: Startup delay over\n");
+	} state low
+    }
+    state low {
+      when (delay(1)) {
+        if(v0 <= 0 || v1 <= 0) {
+	    t1=FALSE;
+            pvPut(t1);
+            k1=FALSE;
+            pvPut(k1);
+	    g1=FALSE;
+            pvPut(g1);
+	} 
+        if (v2 <= 0) {
+	    t2=FALSE;
+            pvPut(t2);
+            k2=FALSE;
+            pvPut(k2);
+	} 
+	if (v3 <= 0) {
+	    t3=FALSE;
+            pvPut(t3);
+            k3=FALSE;
+            pvPut(k3);
+	} 
+	if (v4 <= 0) {
+	    t4=FALSE;
+            pvPut(t4);
+            k4=FALSE;
+            pvPut(k4);
+	} 
+	if (v5 <= 0) {
+	    t5=FALSE;
+            pvPut(t5);
+            k5=FALSE;
+            pvPut(k5);
+	} 
+	if (v6 <= 0) {
+	    t6=FALSE;
+            pvPut(t6);
+            k6=FALSE;
+            pvPut(k6);
+	} 
+	if (v7 <= 0) {
+	    t7=FALSE;
+            pvPut(t7);
+            k7=FALSE;
+            pvPut(k7);
+	} 
+	if (v8 <= 0) {
+	    t8=FALSE;
+            pvPut(t8);
+            k8=FALSE;
+            pvPut(k8);
+        }
+        if (SWinterlock == 1) {
+	    g1=FALSE;
+            pvPut(g1);
+        }
+        if (SRenable <= 0 && Beamstop > 0) {
+	    Beamstop=FALSE;
+            pvPut(Beamstop);
+        }
+        if (SRenable <= 0 && Beamstop2 > 0) {
+            Beamstop2=FALSE;
+            pvPut(Beamstop2);
+        }
+        if (LAenable <= 0) {
+	    if (t1==TRUE) {
+	            t1=FALSE;
+                    pvPut(t1);
+                }
+            if (t2==TRUE) {
+	            t2=FALSE;
+                    pvPut(t2);
+                }
+            if (t3==TRUE) {
+	            t3=FALSE;
+                    pvPut(t3);
+                }
+            if (t4==TRUE) {
+	            t4=FALSE;
+                    pvPut(t4);
+                }
+            if (t5==TRUE) {
+	            t5=FALSE;
+                    pvPut(t5);
+                }
+            if (t6==TRUE) {
+	            t6=FALSE;
+                    pvPut(t6);
+                }
+            if (t7==TRUE) {
+	            t7=FALSE;
+                    pvPut(t7);
+                }
+            if (t8==TRUE) {
+	            t8=FALSE;
+                    pvPut(t8);
+                }
+        } 
+      } state low
+    }
+}
