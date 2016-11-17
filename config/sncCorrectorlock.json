@@ -1,0 +1,20 @@
+{
+"config" : [
+	{"interlock_unit" :
+		{
+			"fault_number" : 3,
+			"monitor_list" : [
+				{"pv_name" : "yifans:SR_PS_HC1:current:ao.STAT", "operator" : "==", "limit" : 3},
+				{"pv_name" : "yifans:RNG:ORB:FDBK:ENABLE", "operator" : "==", "limit" : 1},
+				{"pv_name" : "yifans:RNG:INJ:CORR:CX3:USE", "operator" : "==", "limit" : 1}
+			],
+			"action_list" : [
+				{"action" : "put", "pv_name" : "yifans:RNG:INJ:CORR:CX3:USE", "target": 0},
+				{"action" : "put", "pv_name" : "yifans:RNG:ORB:FDBK:ENABLE", "target": 0},
+				{"action" : "delay", "delay_time" : 5},
+				{"action" : "put", "pv_name" : "yifans:RNG:ORB:FDBK:ENABLE", "target": 1}
+			]
+		}
+	}
+]
+}

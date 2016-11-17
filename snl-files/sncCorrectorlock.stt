@@ -158,58 +158,58 @@ monitor vc_use;
 monitor orb_enable;
 
 ss ss1 {
-    state init {
-	when (delay(5.0)) {
-	     printf("sncCorrectorlock: Startup runing\n");
-	} state mode
-    }
-    state mode {
-	when(delay(1.0)) {
-      
-                for (i=1; i<33; i++)
-                {
-                        if(hc_stat[i] ==10)
-                        {
-                                /*printf("snclock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
+	state init {
+		when (delay(5.0)) {
+			printf("sncCorrectorlock: Startup runing\n");
+		} state mode
+	}
+	state mode {
+		when(delay(1.0)) {
 
-                                if ((orb_enable ==1) & (hc_use[i] ==1))
-                                {      
-                                        hc_use[i] =0;
-                               	        pvPut(hc_use[i]);
-                                        /*interlock_alarm=3;*/
+			for (i=1; i<33; i++)
+			{
+				if(hc_stat[i] ==10)
+				{
+					/*printf("snclock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
 
-                                	orb_enable =0;
-                                	pvPut(orb_enable);
-                                	delay(5.0);
+					if ((orb_enable ==1) & (hc_ulse[i] ==1))
+					{      
+						hc_use[i] =0;
+						pvPut(hc_use[i]);
+						/*interlock_alarm=3;*/
 
-                                	orb_enable =1;
-                                	pvPut(orb_enable);
-                                }
+						orb_enable =0;
+						pvPut(orb_enable);
+						delay(5.0);
 
-                        }
-                        if (vc_stat[i] ==10)
-                        {
-                             //   printf("%d\n",orb_enable);
-                                if ((orb_enable ==1) & (vc_use[i] == 1))
-                                {
-                                        vc_use[i] =0;
-                                        pvPut(vc_use[i]);
-                                        /*interlock_alarm=3;*/
+						orb_enable =1;
+						pvPut(orb_enable);
+					}
 
-                                	orb_enable =0;
-                                	pvPut(orb_enable);
-                                	Delay(5.0);
+				}
+				if (vc_stat[i] ==10)
+				{
+					//   printf("%d\n",orb_enable);
+					if ((orb_enable ==1) & (vc_use[i] == 1))
+					{
+						vc_use[i] =0;
+						pvPut(vc_use[i]);
+						/*interlock_alarm=3;*/
 
-                                	orb_enable =1;
-                                	pvPut(orb_enable);
-                                }
-                        }
-                }
-	} state twait
-    }
-    state twait {
-        when(delay(1.0)) {
-                 
-        }state mode 
-    } 
+						orb_enable =0;
+						pvPut(orb_enable);
+						Delay(5.0);
+
+						orb_enable =1;
+						pvPut(orb_enable);
+					}
+				}
+			}
+		} state twait
+	}
+	state twait {
+		when(delay(1.0)) {
+
+		}state mode 
+	} 
 }

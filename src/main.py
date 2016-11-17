@@ -14,12 +14,18 @@ def main_loop(config_information):
         interlock_unit_i = interlock_unit.InterlockUnit(interlock_unit_config)
         interlock_unit_i.process_interlock()
 
-def main():
-    content = read_json_file('./config/vacuum_interlock_config.json')
+def main(config_file_list):
+    content_list = []
+    for i in config_file_list:
+        content_list.append(read_json_file(i))
     while 1:
         time.sleep(0.5)
-        main_loop(content['config'])
+        for i in content_list:
+            main_loop(i['config'])
+
 
 if __name__ == "__main__":
     print "SIS ( software interlock system ) begins ..."
-    main()
+    config_file_list = ["../config/sncCorrectorlock.json", "../config/vacuum_interlock_config.json"]
+    print config_file_list
+    main(config_file_list)

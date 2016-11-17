@@ -27,36 +27,36 @@ monitor beam_curr;
 monitor IVU_gap;
 
 ss vacuumInterlock {
-    state init {
-	when (delay(5.0)) {
-		printf("sncBeamInterlock: Startup delay over\n");
-	} state check
-    }
-    state check{
-	when(delay(1.0)) {
-                
-                if(beam_curr >= beam_threshold) 
+	state init {
+		when (delay(5.0)) {
+			printf("sncBeamInterlock: Startup delay over\n");
+		} state check
+	}
+	state check{
+		when(delay(1.0)) {
+
+			if(beam_curr >= beam_threshold) 
 			{
-                   		/*printf("sncVacuumInterlock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
-            	                InjList_bo[8] = 0;
-                                pvPut(InjList_bo[8]);
-                                delay(1.0);
-		       		for (k = 0; k<8; k++)
-                   		{
-                       			InjList_bo[k] = 0;
-                     			pvPut(InjList_bo[k]);
-                   		}
-		   	
+				/*printf("sncVacuumInterlock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
+				InjList_bo[8] = 0;
+				pvPut(InjList_bo[8]);
+				delay(1.0);
+				for (k = 0; k<8; k++)
+				{
+					InjList_bo[k] = 0;
+					pvPut(InjList_bo[k]);
+				}
+
 			}
-                if(IVU_gap <= 20)  
+			if(IVU_gap <= 20)  
 			{
-		       		for (k = 0; k<7; k++)
-                   		{
-                       			InjList_bo[k] = 0;
-                     			pvPut(InjList_bo[k]);
-                   		}
-		   	
+				for (k = 0; k<7; k++)
+				{
+					InjList_bo[k] = 0;
+					pvPut(InjList_bo[k]);
+				}
+
 			}
-	}state check
-    } 
+		}state check
+	} 
 }

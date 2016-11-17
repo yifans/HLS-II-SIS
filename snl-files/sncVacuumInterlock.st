@@ -69,45 +69,45 @@ monitor vacuum_threshold3;
 monitor vacuumList_ai;
 
 ss vacuumInterlock {
-    state init {
-        when (delay(5.0)) {
-                printf("sncVacuumInterlock: Startup delay over\n");
-                printf("sncVacuumInterlock: vacuumList_ai[%d] is %2.10f !\n",19,vacuumList_ai[19]);
-        } state check
-    }
-    state check{
-        when(delay(1.0)) {
-                n=0;
-                for (i=0; i<20; i++)
-                {
-                        if(vacuumList_ai[i] >= vacuum_threshold1)
-                        {
-                                /*printf("sncVacuumInterlock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
-                                rf_vc_set = 0.3;
-                                pvPut(rf_vc_set);
-                        }
-                        if(vacuumList_ai[i] >= vacuum_threshold2)
-                        {
-                                n=n+1;       
-                        }
-                        if(vacuumList_ai[i] >= vacuum_threshold3)
-                        {
-                                for (k = 0; k<20; k++)
-                                {
-                                        vacuumList_bo[k] = 0;
-                                        pvPut(vacuumList_bo[k]);
-                                }
-                        }
-                }
-                if (n >= 2)
-                {
-                        for (j = 0; j<4; j++)
-                        {
-                                valveList_bo[j] = 0;
-                                pvPut(valveList_bo[j]);
-                        }
-                }   
-        }state check
-    }
+	state init {
+		when (delay(5.0)) {
+			printf("sncVacuumInterlock: Startup delay over\n");
+			printf("sncVacuumInterlock: vacuumList_ai[%d] is %2.10f !\n",19,vacuumList_ai[19]);
+		} state check
+	}
+	state check{
+		when(delay(1.0)) {
+			n=0;
+			for (i=0; i<20; i++)
+			{
+				if(vacuumList_ai[i] >= vacuum_threshold1)
+				{
+					/*printf("sncVacuumInterlock: vacuumList_ai[%d] is %6.2f !\n",i,vacuumList_ai[i]);*/
+					rf_vc_set = 0.3;
+					pvPut(rf_vc_set);
+				}
+				if(vacuumList_ai[i] >= vacuum_threshold2)
+				{
+					n=n+1;       
+				}
+				if(vacuumList_ai[i] >= vacuum_threshold3)
+				{
+					for (k = 0; k<20; k++)
+					{
+						vacuumList_bo[k] = 0;
+						pvPut(vacuumList_bo[k]);
+					}
+				}
+			}
+			if (n >= 2)
+			{
+				for (j = 0; j<4; j++)
+				{
+					valveList_bo[j] = 0;
+					pvPut(valveList_bo[j]);
+				}
+			}   
+		}state check
+	}
 }
 
