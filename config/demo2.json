@@ -2,23 +2,24 @@
    "demo":{  
       "node_type":"signal_node",
       "mask" : 1,
-      "expression":"fault_number>=2",
+      "expression":"or",
       "child":[  
          {  
             "node_type":"signal_node",
+            "mask":1,
             "expression":"and",
             "child":[  
                {  
                   "node_type":"device_node",
                   "mask":1,
-                  "pv_name":"PV_1",
+                  "pv_name":"PV_IN_1",
                   "operator":">=",
-                  "threshold":3
+                  "threshold":1
                },
                {  
                   "node_type":"device_node",
                   "mask":1,
-                  "pv_name":"PV_2",
+                  "pv_name":"PV_IN_2",
                   "operator":">=",
                   "threshold":1
                }
@@ -27,16 +28,16 @@
          {  
             "node_type":"device_node",
             "mask" : 1,
-            "pv_name":"PV_3",
+            "pv_name":"PV_IN_3",
             "operator":">=",
             "threshold":1
          },
          {  
             "node_type":"device_node",
             "mask" : 1,
-            "pv_name":"PV_4",
+            "pv_name":"PV_IN_4",
             "operator":">=",
-            "threshold":4
+            "threshold":1
          }
       ],
       "action_list" : [
