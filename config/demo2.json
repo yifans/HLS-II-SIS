@@ -1,0 +1,58 @@
+{  
+   "demo":{  
+      "node_type":"signal_node",
+      "mask" : 1,
+      "expression":"fault_number>=2",
+      "child":[  
+         {  
+            "node_type":"signal_node",
+            "expression":"and",
+            "child":[  
+               {  
+                  "node_type":"device_node",
+                  "mask":1,
+                  "pv_name":"PV_1",
+                  "operator":">=",
+                  "threshold":3
+               },
+               {  
+                  "node_type":"device_node",
+                  "mask":1,
+                  "pv_name":"PV_2",
+                  "operator":">=",
+                  "threshold":1
+               }
+            ]
+         },
+         {  
+            "node_type":"device_node",
+            "mask" : 1,
+            "pv_name":"PV_3",
+            "operator":">=",
+            "threshold":1
+         },
+         {  
+            "node_type":"device_node",
+            "mask" : 1,
+            "pv_name":"PV_4",
+            "operator":">=",
+            "threshold":4
+         }
+      ],
+      "action_list" : [
+         {
+            "node_type" : "action_node",
+            "mask" : 1,
+            "action_type":"set",
+            "pv_name" : "PV_OUT_1",
+            "set_point" : 0
+         },
+         {
+            "node_type" : "action_node",
+            "mask" : 1,
+            "action_type":"delay",
+            "delay_time" : 1
+         }
+      ]
+   }
+}

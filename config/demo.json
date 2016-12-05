@@ -1,0 +1,18 @@
+{
+"config" : [
+	{"interlock_unit" :
+		{
+			"fault_number" : 2,
+			"monitor_list" : [
+				{"pv_name" : "PV_IN_1", "operator" : ">=", "limit" : 4},
+				{"pv_name" : "PV_IN_2", "operator" : "==", "limit" : 3}
+			],
+			"action_list" : [
+				{"action" : "put", "pv_name" : "PV_OUT_1", "target": 0.5},
+				{"action" : "delay", "delay_time" : 5},
+				{"action" : "put", "pv_name" : "PV_OUT_2", "target": 0}
+			]
+		}
+	}
+]
+}

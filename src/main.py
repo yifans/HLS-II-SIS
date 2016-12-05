@@ -26,6 +26,7 @@ def main(config_file_list):
 
 if __name__ == "__main__":
     print "SIS ( software interlock system ) begins ..."
-    config_file_list = ["../config/sncCorrectorlock.json", "../config/vacuum_interlock_config.json"]
+#    config_file_list = ["../config/sncCorrectorlock.json", "../config/vacuum_interlock_config.json"]
+    config_file_list = ["../config/demo.json" ]
     print config_file_list
     main(config_file_list)

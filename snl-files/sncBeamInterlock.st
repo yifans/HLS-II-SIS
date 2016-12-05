@@ -55,7 +55,6 @@ ss vacuumInterlock {
 					InjList_bo[k] = 0;
 					pvPut(InjList_bo[k]);
 				}
-
 			}
 		}state check
 	} 
