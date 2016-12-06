@@ -30,17 +30,33 @@ class SignalNode(object):
             #    print "monitor_name" + monitor.pv_name + ", monitor value is " + str(monitor_value)
             child_status_list.append(monitor_status)
 
+        fault_sum = 0
+        for i in child_status_list:
+            if i == True:
+                fault_sum += 1
+
         if self.expression == "or":
             if max(child_status_list) == True:
                 self.status = True
         elif self.expression == "and" :
-            if min(child_status_list) == False:
+            if min(child_status_list) != False:
+                self.status = True
+        elif self.expression[0] == '>' and self.expression[1] == '=':
+            fault_num = int(self.expression[2:])
+            if fault_sum >= fault_num:
+                self.status = True
+        elif self.expression[0] == '<' and self.expression[1] == '=':
+            fault_num = int(self.expression[2:])
+            if fault_sum <= fault_num:
                 self.status = True
         else:
-            print self.expression + " is not supported."
+            print self.expression + " is not supported. Please use 'and, or, >=, <='"
 
     def process(self):
         status = self.get_status()
         if status == True:
             for i in self.action:
                 i.execute_action()
+            for i in self.child:
+                if isinstance(i, SignalNode):
+                    i.process()

@@ -23,10 +23,10 @@ class ActionNode(object):
                 caput(self.pv_name, self.set_point)
                 print self.pv_name + "'s value is changed to " + str(self.set_point)
         elif self.action == "delay":
-            print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            print "delay %fs" % float(self.delay_time)
+            #print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            #print "delay %fs" % float(self.delay_time)
             time.sleep(float(self.delay_time))
-            print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            #print datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 if __name__ == "__main__":

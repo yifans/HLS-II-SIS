@@ -2,7 +2,7 @@
    "demo":{  
       "node_type":"signal_node",
       "mask" : 1,
-      "expression":"or",
+      "expression":">=2",
       "child":[  
          {  
             "node_type":"signal_node",
@@ -22,6 +22,15 @@
                   "pv_name":"PV_IN_2",
                   "operator":">=",
                   "threshold":1
+               }
+            ],
+            "action_list" : [
+               {
+                  "node_type" : "action_node",
+                  "mask" : 1,
+                  "action_type":"set",
+                  "pv_name" : "PV_OUT_2",
+                  "set_point" : 0
                }
             ]
          },
@@ -52,7 +61,14 @@
             "node_type" : "action_node",
             "mask" : 1,
             "action_type":"delay",
-            "delay_time" : 1
+            "delay_time" : 5
+         },
+         {
+            "node_type" : "action_node",
+            "mask" : 1,
+            "action_type":"set",
+            "pv_name" : "PV_OUT_1",
+            "set_point" : 4
          }
       ]
    }
