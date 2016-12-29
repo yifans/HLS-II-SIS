@@ -1,6 +1,6 @@
 {
    "demo":{  
-      "node_type":"branch_node","mask" : 1,"expression":"fault>=2",
+      "node_type":"branch_node","mask" : 1,"expression":"fault_count>=2",
       "child":[  
          {  
             "node_type":"branch_node","mask":1,"expression":"and",
