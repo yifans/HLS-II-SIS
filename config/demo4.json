@@ -1,0 +1,25 @@
+
+{  
+   "demo":{  
+      "node_type":"branch_node","mask" : 1,"expression":">=2",
+      "child":[  
+         {  
+            "node_type":"branch_node","mask":1,"expression":"and",
+            "child":[  
+               { "node_type":"leaf_node","mask":1,"pv_name":"PV_IN_1","operator":"==","threshold":0},
+               { "node_type":"leaf_node", "mask":1, "pv_name":"PV_IN_2", "operator":">=", "threshold":1}
+            ],
+            "action_list" : [
+               { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_2", "set_point" : 0}
+            ]
+         },
+         { "node_type":"leaf_node","mask" : 1,"pv_name":"PV_IN_3","operator":"<=","threshold":0},
+         { "node_type":"leaf_node","mask" : 1,"pv_name":"PV_IN_4","operator":">","threshold":2}
+      ],
+      "action_list" : [
+         {"mask" : 1,"action_type":"set", "pv_name" : "PV_OUT_1","set_point" : 0 },
+         { "mask" : 1, "action_type":"delay", "delay_time" : 5},
+         { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_1", "set_point" : 4 }
+      ]
+   }
+}

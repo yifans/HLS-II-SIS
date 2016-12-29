@@ -12,6 +12,5 @@ def read_json_file(json_file_path):
 
 
 if __name__ == '__main__':
-#    content = read_json_file('./interlock_config_test.json')
     content = read_json_file('../config/demo.json')
     print content

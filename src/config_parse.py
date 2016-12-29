@@ -92,8 +92,8 @@ if __name__ == '__main__':
    }
 }
     print content
-    print    type(content)
+    print type(content)
 
-    a =  get_interlock_tree(content)
+    a = get_interlock_tree(content)
     print a
     print "done"
