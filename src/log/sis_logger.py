@@ -11,10 +11,9 @@
 
 import logging
 
-def set_sis_logger():
+def set_sis_logger(path):
     # 设置logging参数
     logger_name = "SIS_logger"  # 获取的Logger名称
-    path = "/tmp/sis_log.log"  # 日志文件保持路径，缺省为在当前目录下的"./tmp/sis_log.log"
     l_level = logging.DEBUG  # 设置logging等级
     s_level = logging.DEBUG  # 向stream中输出日志的等级
     f_level = logging.DEBUG  # 向文件中输出日志的等级

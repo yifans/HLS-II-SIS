@@ -8,19 +8,23 @@
 # Filename     : sis_core.py
 # Description  : SIS core program
 # ******************************************************
-import logging
+
 import sys
-
 sys.path.append("..")
+import logging
 
-# from util import read_json
-# from log import sis_logger
+from util import read_json
 
 class SISCore(object):
+    """
+    SIS 的核心部分
+    """
     def __init__(self, config_file_path):
-        #interlock_config = read_json.readjson(config_file_path)
-        #print interlock_config
-        pass
+        """
+        SIS Core 初始化函数
+        :param config_file_path: JSON配置文件路径
+        """
+        interlock_config = read_json.read_json_file(config_file_path)
 
     def process(self):
         logger = logging.getLogger("SIS_logger")

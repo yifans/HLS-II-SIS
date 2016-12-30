@@ -9,18 +9,22 @@
 # Description  : SIS main
 # ******************************************************
 
+import logging
+
 from core import sis_core
 from log import sis_logger
-import logging
+from util import read_json
 
 
 def main():
-    core = sis_core.SISCore("/home/yifans/code/PycharmProjects/HLS-II-SIS/config")
+    #初始化日志
+    sis_logger.set_sis_logger("./log/sis_log.log")
+    #初始化Core
+    core = sis_core.SISCore("./config/interlock_config.json")
+
+    logger = logging.getLogger("SIS_logger")
+    logger.info("SIS ( software interlock system ) begins ...")
     core.process()
 
 if __name__ == "__main__":
-    sis_logger.set_sis_logger()
-    logger = logging.getLogger("SIS_logger")
-    logger.info("SIS ( software interlock system ) begins ...")
     main()
-

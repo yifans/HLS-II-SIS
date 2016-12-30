@@ -11,7 +11,6 @@
 
 import json
 
-
 def read_json_file(json_file_path):
     """
     read the json file, and return the content as a dict
