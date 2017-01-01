@@ -18,7 +18,7 @@ from util import read_json
 
 def main():
     #初始化日志
-    sis_logger.set_sis_logger("./log/sis_log.log")
+    sis_logger.set_sis_logger("./log/sis_log.txt")
     #初始化Core
     core = sis_core.SISCore("./config/interlock_config.json")
 
