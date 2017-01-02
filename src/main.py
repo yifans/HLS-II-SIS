@@ -17,10 +17,11 @@ from util import read_json
 
 
 def main():
+    TOP = "/home/yifans/code/PycharmProjects/HLS-II-SIS"
     #初始化日志
-    sis_logger.set_sis_logger("./log/sis_log.txt")
+    sis_logger.set_sis_logger(TOP+"/log/sis_log.txt")
     #初始化Core
-    core = sis_core.SISCore("./config/interlock_config.json")
+    core = sis_core.SISCore(TOP+"/config/interlock_config.json")
 
     logger = logging.getLogger("SIS_logger")
     logger.info("SIS ( software interlock system ) begins ...")

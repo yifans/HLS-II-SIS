@@ -3,13 +3,14 @@
 
 # ******************************************************
 # Author       : Yifan Song
-# Last modified: 2016.12.30
+# Last modified: 2016.01.02
 # Email        : yifans@mail.ustc.edu.cn
 # Filename     : leaf_node.py
 # Description  : the leaf node in the interlock tree
 # ******************************************************
 
 from epics import caget
+import logging
 
 
 class LeafNode(object):
@@ -43,16 +44,9 @@ class LeafNode(object):
         elif self.compare_operator == '!=':
             self.status = abs(pv_value_now - self.design_value) > 1e-12
         else:
-            print "compare_operator " + " is not support, please use >=, <=, ==, !="
+            logger = logging.getLogger("SIS_logger")
+            logger.error("compare_operator " + " is not support, please use >=, <=, ==, !=")
 
 
 if __name__ == "__main__":
-    leaf_dict_demo = {
-        "node_type": "leaf_node",
-        "mask": 1,
-        "pv_name": "PV_IN_4",
-        "compare_operator": ">",
-        "design_value": 2}
-
-    n = LeafNode(leaf_dict_demo)
-    print n.get_status()
+    pass

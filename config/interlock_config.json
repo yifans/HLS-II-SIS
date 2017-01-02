@@ -1,24 +1,24 @@
 {
-   "demo":{  
-      "node_type":"branch_node","mask" : 1,"expression":"fault_count>=2",
-      "child":[  
-         {  
-            "node_type":"branch_node","mask":1,"expression":"and",
-            "child":[  
+   "demo":{
+      "node_type":"trunk_node","mask" : 1,"expression":"fault_count>=2",
+      "child":[
+         {
+            "node_type":"trunk_node","mask":1,"expression":"and",
+            "child":[
                { "node_type":"leaf_node","mask":1,"pv_name":"PV_IN_1","compare_operator":"==","design_value":0},
                { "node_type":"leaf_node", "mask":1, "pv_name":"PV_IN_2", "compare_operator":">=", "design_value":1}
             ],
             "action_list" : [
-               { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_2", "set_point" : 0}
+               { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_1", "set_point" : 0}
             ]
          },
          { "node_type":"leaf_node","mask" : 1,"pv_name":"PV_IN_3","compare_operator":"<=","design_value":0},
-         { "node_type":"leaf_node","mask" : 1,"pv_name":"PV_IN_4","compare_operator":">","design_value":2}
+         { "node_type":"leaf_node","mask" : 1,"pv_name":"PV_IN_4","compare_operator":">=","design_value":2}
       ],
       "action_list" : [
-         {"mask" : 1,"action_type":"set", "pv_name" : "PV_OUT_1","set_point" : 0 },
+         {"mask" : 1,"action_type":"set", "pv_name" : "PV_OUT_2","set_point" : 1 },
          { "mask" : 1, "action_type":"delay", "delay_time" : 5},
-         { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_1", "set_point" : 4 }
+         { "mask" : 1, "action_type":"set", "pv_name" : "PV_OUT_3", "set_point" : 4 }
       ]
    }
 }
