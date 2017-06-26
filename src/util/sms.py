@@ -24,8 +24,8 @@ def send_sms(phone_list, message):
 
     url = "http://210.5.158.31/hy/"
 
-    uid = "80246"
-    auth = "A2155DE1BE1D32C9429DAFD57B791EEC"
+    uid = 
+    auth = 
     phones = ",".join(phone_list)
 
     try:
@@ -46,7 +46,7 @@ def send_sms(phone_list, message):
             httpClient.close()
 
 if __name__ == "__main__":
-    phone_list = ["15256011677"]
+    phone_list = [""]
     # phone_list = ["15256011677", "15256011677"]
     #message = "Test the software interlock system"
     #message = "The vacuum system has failed (level 1), and the beam is removed."
